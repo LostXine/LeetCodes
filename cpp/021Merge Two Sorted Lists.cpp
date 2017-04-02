@@ -90,3 +90,38 @@ public:
         return head.next;        
     }
 };
+
+/* vector实现*/
+vector<int> mergeArrays(vector<int>& a, vector<int>& b) {
+	vector<int> result;
+	result.reserve(a.size() + b.size());
+	vector<int>::iterator la, lb;
+	la = a.begin();
+	lb = b.begin();
+	while (la != a.end() && lb != b.end())
+	{
+		int v1 = *la;
+		int v2 = *lb;
+		if (v1 < v2)
+		{
+			result.push_back(v1);
+			la++;
+		}
+		else
+		{
+			result.push_back(v2);
+			lb++;
+		}
+	}
+	while (la != a.end())
+	{
+		result.push_back(*la);
+		la++;
+	}
+	while (lb != b.end())
+	{
+		result.push_back(*lb);
+		lb++;
+	}
+	return result;
+}
